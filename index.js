@@ -18,7 +18,7 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'installInst',
+    name: 'installInstr',
     message: 'Please enter any installation instructions for your project',
   },
   {
@@ -33,7 +33,7 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'testInst',
+    name: 'testInstr',
     message: 'Please enter any test instructions for your project',
   },
   {
@@ -57,12 +57,21 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-
+  fs.writeFile(fileName, data, (error) => {
+    if(error){
+      console.error(`There has been a problem: ${error}`)
+    } else {
+      console.log('File written successfully!')
+    }
+  });
 }
 
 // function to initialize program
 function init() {
-  inquirer.prompt(questions).then((answers) => generateMarkdown(answers)).then((markdown) => console.log(markdown)).catch((error) => {console.log(`something went wrong here: ${error}`)})
+  inquirer.prompt(questions)
+  .then((answers) => generateMarkdown(answers))
+  .then((markdown) => writeToFile("./READMEs/output.md", markdown))
+  .catch((error) => {console.log(`something went wrong here: ${error}`)})
 }
 
 // function call to initialize program
