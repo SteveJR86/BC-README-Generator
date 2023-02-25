@@ -12,7 +12,7 @@ This program asks a serious of questions on the command line in order to generat
 
 ## Video 
 
-[Link to Video Run-Through](./Run-through.mp4)
+[Link to Video Run-Through](./Run-Through.mp4)
 
 ## Link to generated README
 
