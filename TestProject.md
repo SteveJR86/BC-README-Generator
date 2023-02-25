@@ -4,7 +4,7 @@
   
 ![license](https://img.shields.io/badge/license-GNU%20GPLv3-blue)
     
-    This is a test project to demonstrate the readme generator working
+This is a test project to demonstrate the readme generator
 
 ## Table of Contents
 

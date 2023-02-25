@@ -8,23 +8,20 @@ function generateMarkdown(data) {
 // logic below determines which badge is shown depending on the license selected
   if(data.license === 'MIT License') {
     markdown += `![MIT license](https://img.shields.io/badge/license-MIT-blue)
-    
     `;
   } else if (data.license === 'GNU GPLv3') {
     markdown += `![license](https://img.shields.io/badge/license-GNU%20GPLv3-blue)
-    
     `;
   } else if (data.license === 'Apache License 2.0') {
     markdown += `![license](https://img.shields.io/badge/license-Apache%202.0-blue)
-    
     `;
   } else if (data.license === 'Boost Software License 2.0') {
     markdown += `![license](https://img.shields.io/badge/license-Boost%201.0-blue)
-    
     `;
   }
   
-  markdown += `${data.description}
+  markdown += `
+${data.description}
 
 ## Table of Contents
 
