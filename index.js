@@ -7,6 +7,12 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = [
   {
     type: 'input',
+    name: 'filename',
+    message: 'Please enter a filename for your README file',
+    default: 'README',
+  },
+  {
+    type: 'input',
     name: 'title',
     message: 'Please enter your project title',
     default: 'Project',
@@ -15,26 +21,31 @@ const questions = [
     type: 'input',
     name: 'description',
     message: 'Please enter a description for your project',
+    default: 'None'
   },
   {
     type: 'input',
     name: 'installInstr',
     message: 'Please enter any installation instructions for your project',
+    default: 'None',
   },
   {
     type: 'input',
     name: 'usage',
     message: 'Please enter any usage information for your project',
+    default: 'None',
   },
   {
     type: 'input',
     name: 'contGuide',
     message: 'Please enter contribution guidelines for your project',
+    default: 'None'
   },
   {
     type: 'input',
     name: 'testInstr',
     message: 'Please enter any test instructions for your project',
+    default: 'None',
   },
   {
     type: 'list',
@@ -47,11 +58,13 @@ const questions = [
     type: 'input',
     name: 'userGitHub',
     message: 'Please enter your GitHub details',
+    default: 'None'
   },
   {
     type: 'input',
     name: 'userEmail',
     message: 'Please enter your email address for users to contact you with any questions',
+    default: 'None'
   }
 ];
 
@@ -69,8 +82,14 @@ function writeToFile(fileName, data) {
 // function to initialize program
 function init() {
   inquirer.prompt(questions)
-  .then((answers) => generateMarkdown(answers))
-  .then((markdown) => writeToFile("./READMEs/output.md", markdown))
+  .then((answers) => {
+    const { filename } = answers;
+    console.log(filename);
+    // console.log(details);
+    const markdown = generateMarkdown(answers);
+    return {'filename': filename, 'markdown': markdown}
+  })
+  .then((data) => writeToFile(`./READMEs/${data.filename}.md`, data.markdown))
   .catch((error) => {console.log(`something went wrong here: ${error}`)})
 }
 

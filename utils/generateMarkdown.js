@@ -1,15 +1,30 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  let markdown = `# ${data.title}
 
 ## Description
-
-${data.description}
-
-![MIT license](https://img.shields.io/badge/license-MIT-blue)
-![license](https://img.shields.io/badge/license-GNU%20GPLv3-blue)
-![license](https://img.shields.io/badge/license-Apache%202.0-blue)
-![license](https://img.shields.io/badge/license-Boost%201.0-blue)
+  
+`;
+// logic below determines which badge is shown depending on the license selected
+  if(data.license === 'MIT License') {
+    markdown += `![MIT license](https://img.shields.io/badge/license-MIT-blue)
+    
+    `;
+  } else if (data.license === 'GNU GPLv3') {
+    markdown += `![license](https://img.shields.io/badge/license-GNU%20GPLv3-blue)
+    
+    `;
+  } else if (data.license === 'Apache License 2.0') {
+    markdown += `![license](https://img.shields.io/badge/license-Apache%202.0-blue)
+    
+    `;
+  } else if (data.license === 'Boost Software License 2.0') {
+    markdown += `![license](https://img.shields.io/badge/license-Boost%201.0-blue)
+    
+    `;
+  }
+  
+  markdown += `${data.description}
 
 ## Table of Contents
 
@@ -46,6 +61,8 @@ You can find the profile of the owner of this repo on GitHub at [https://github.
 
 If you've any questions on this repo please email the owner at [${data.userEmail}](mailto:${data.userEmail})
 `;
+
+return markdown
 }
 
 module.exports = generateMarkdown;
